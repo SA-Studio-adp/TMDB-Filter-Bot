@@ -10,9 +10,9 @@ def is_enabled(value, default):
         return default
 # Bot information
 SESSION = environ.get('SESSION', 'JACK_ROBOT')
-API_ID = ''
-API_HASH = ''
-BOT_TOKEN = '' 
+API_ID = int(environ.get('API_ID', 0))
+API_HASH = environ.get('API_HASH', '')
+BOT_TOKEN = environ.get('BOT_TOKEN', '')
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
