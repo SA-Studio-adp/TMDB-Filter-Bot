@@ -27,22 +27,29 @@ def get_env(name, default=None, *, required=False):
     return value
 
 
-def get_int_env(name, default=None, *, required=False):
+def get_int_env(name, default=None, *, required=False, min_value=None):
     value = get_env(name, default, required=required)
     if value in (None, ""):
         return 0 if default in (None, "") else int(default)
 
     try:
-        return int(value)
+        parsed_value = int(value)
     except (TypeError, ValueError) as exc:
         raise RuntimeError(
             f"Environment variable {name} must be an integer, got: {value!r}."
         ) from exc
 
+    if min_value is not None and parsed_value < min_value:
+        raise RuntimeError(
+            f"Environment variable {name} must be >= {min_value}, got: {parsed_value}."
+        )
+
+    return parsed_value
+
 
 # Bot information
 SESSION = get_env('SESSION', 'JACK_ROBOT')
-API_ID = get_int_env('API_ID', required=True)
+API_ID = get_int_env('API_ID', required=True, min_value=1)
 API_HASH = get_env('API_HASH', required=True)
 BOT_TOKEN = get_env('BOT_TOKEN', required=True)
 
