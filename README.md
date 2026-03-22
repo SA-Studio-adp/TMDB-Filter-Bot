@@ -77,7 +77,7 @@ All configuration is performed through environment variables defined in [`info.p
    ```bash
    pip install -r requirements.txt
    ```
-2. Populate the environment variables (e.g. locally via `.env` or system var exports).
+2. Populate the environment variables (e.g. locally via `.env` or system var exports). At minimum, `API_ID`, `API_HASH`, and `BOT_TOKEN` must all be present. If you deploy on Koyeb and miss `API_ID` or `API_HASH`, Pyrogram will fail during startup with an authorization error.
 3. Start the application:
    ```bash
    python bot.py
