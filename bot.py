@@ -150,4 +150,14 @@ class Bot(Client):
 
 
 app = Bot()
-app.run()
+
+try:
+    app.run()
+except AttributeError as exc:
+    if "The API key is required for new authorizations." in str(exc):
+        raise SystemExit(
+            "Startup failed: Telegram credentials are missing or invalid. "
+            "Please verify Koyeb environment variables API_ID, API_HASH, and BOT_TOKEN. "
+            "API_ID must be a real numeric value from my.telegram.org, not 0 or blank."
+        ) from exc
+    raise
