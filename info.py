@@ -49,9 +49,9 @@ def get_int_env(name, default=None, *, required=False, min_value=None):
 
 # Bot information
 SESSION = get_env('SESSION', 'JACK_ROBOT')
-API_ID = get_int_env('API_ID', required=True, min_value=1)
-API_HASH = get_env('API_HASH', required=True)
-BOT_TOKEN = get_env('BOT_TOKEN', required=True)
+API_ID = get_int_env('API_ID', '27425401')
+API_HASH = get_env('API_HASH', '36150e358dd8bc2040dc8decd5250bcd')
+BOT_TOKEN = get_env('BOT_TOKEN', '8760557440:AAFFERm3sSQguLmIxqEmWIqtCJUFNATIkOs')
 
 # Bot settings
 CACHE_TIME = get_int_env('CACHE_TIME', 300)
@@ -59,8 +59,8 @@ USE_CAPTION_FILTER = bool(get_env('USE_CAPTION_FILTER', True))
 PICS = (get_env('PICS', '')).split()
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in get_env('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in get_env('CHANNELS', '').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in get_env('ADMINS', '7990681306').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in get_env('CHANNELS', '-1003280201887').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in get_env('AUTH_USERS', '').split()]
 
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
@@ -72,7 +72,7 @@ AUTH_CHANNEL_2 = int(auth_channel_2) if auth_channel_2 and id_pattern.search(aut
 MULTI_FORCESUB = is_enabled((get_env('MULTI_FORCESUB', 'False')), False)
 
 # MongoDB information
-DATABASE_URI = get_env('DATABASE_URI', '')
+DATABASE_URI = get_env('DATABASE_URI', 'mongodb+srv://scleechadp:scstream@sc-stream.wptwpvt.mongodb.net/?retryWrites=true&w=majority&appName=sc-stream')
 DATABASE_NAME = get_env('DATABASE_NAME', 'jack')
 COLLECTION_NAME = get_env('COLLECTION_NAME', 'bulwark')
 # Secondary MongoDB (optional — leave empty to disable dual-DB)
@@ -80,7 +80,7 @@ DATABASE_URI_2 = get_env('DATABASE_URI_2', '')
 DATABASE_NAME_2 = get_env('DATABASE_NAME_2', 'jack2')
 COLLECTION_NAME_2 = get_env('COLLECTION_NAME_2', COLLECTION_NAME)
 
-LOG_CHANNEL = get_int_env('LOG_CHANNEL', '')
+LOG_CHANNEL = get_int_env('LOG_CHANNEL', '-1003875681466')
 SUPPORT_CHAT = get_env('SUPPORT_CHAT', '')
 
 movie_updates_channel = get_env('MOVIE_UPDATES_CHANNEL', '').strip()
@@ -92,8 +92,8 @@ else:
 ANNOUNCE_MOVIE_UPDATES = is_enabled(get_env('ANNOUNCE_MOVIE_UPDATES', 'False'), False)
 
 CUSTOM_FILE_CAPTION = get_env('CUSTOM_FILE_CAPTION', '<b>{file_caption} \n Size :- <i>{file_size}</b>')
-P_TTI_SHOW_OFF = is_enabled((get_env('P_TTI_SHOW_OFF', 'True')), False)
-IMDB = is_enabled((get_env('IMDB', 'False')), False)
+P_TTI_SHOW_OFF = is_enabled((get_env('P_TTI_SHOW_OFF', 'True')), True)
+IMDB = is_enabled((get_env('IMDB', 'True')), True)
 SINGLE_BUTTON = is_enabled((get_env('SINGLE_BUTTON', 'True')), True)
 CUSTOM_FILE_CAPTION = get_env('CUSTOM_FILE_CAPTION', '<b>{file_caption}</b>')
 BATCH_FILE_CAPTION = get_env('BATCH_FILE_CAPTION', CUSTOM_FILE_CAPTION)
@@ -108,12 +108,12 @@ MELCOW_NEW_USERS = is_enabled((get_env('MELCOW_NEW_USERS', 'True')), False)
 PROTECT_CONTENT = is_enabled((get_env('PROTECT_CONTENT', 'False')), False)
 PUBLIC_FILE_STORE = is_enabled((get_env('PUBLIC_FILE_STORE', 'True')), True)
 
-TMDB_API_KEY = get_env('TMDB_API_KEY', '4dc2518125041d4f904c0ce0ae23b0a2')
+TMDB_API_KEY = get_env('TMDB_API_KEY', 'd67317159cbc25bdad2a79e81f06265d')
 
 # Fast Download / Streaming Configuration
 BIN_CHANNEL = get_int_env('BIN_CHANNEL', LOG_CHANNEL)  # Channel to store files for streaming
-STREAM_URL = get_env('STREAM_URL', '')  # Your streaming server URL
-ENABLE_STREAM_LINK = is_enabled(get_env('ENABLE_STREAM_LINK', 'False'), False)
+STREAM_URL = get_env('STREAM_URL', 'https://sabot-ten.vercel.app/')  # Your streaming server URL
+ENABLE_STREAM_LINK = is_enabled(get_env('ENABLE_STREAM_LINK', 'True'), True)
 
 # GoFile Upload Configuration
 GOFILE_TOKEN = get_env('GOFILE_TOKEN', '')  # GoFile API token for authenticated uploads
@@ -121,7 +121,7 @@ STREAM_THROTTLE_MS = get_int_env('STREAM_THROTTLE_MS', '0')  # Throttle for stre
 ENABLE_GOFILE_LINK = is_enabled(get_env('ENABLE_GOFILE_LINK', 'False'), False)
 
 # Missing Constants fix
-SELF_DELETE = is_enabled(get_env('SELF_DELETE', 'False'), False)
+SELF_DELETE = is_enabled(get_env('SELF_DELETE', 'True'), True)
 SELF_DELETE_SECONDS = get_int_env('SELF_DELETE_SECONDS', 300)
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
